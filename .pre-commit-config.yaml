@@ -1,0 +1,9 @@
+repos:
+  - repo: local
+    hooks:
+      - id: check-changelog
+        name: Check CHANGELOG.md is updated
+        entry: bash -c 'jj diff --summary 2>/dev/null | grep -q "CHANGELOG.md" || (echo "Error: CHANGELOG.md must be updated with your changes" && exit 1)'
+        language: system
+        pass_filenames: false
+        always_run: true
